@@ -54,6 +54,9 @@ export default {
 .new-note {
   text-align: center;
 }
+.input-wrap {
+	margin-bottom: 30px;
+}
 .new-note__priority {
 	margin-bottom: 50px;
 	border: 0;
