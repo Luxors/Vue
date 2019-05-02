@@ -18,7 +18,7 @@
 
 		<router-view></router-view>
 
-		<footer>Footer</footer>
+		<!-- <footer>Footer</footer> -->
 
 	</div>
 </template>
