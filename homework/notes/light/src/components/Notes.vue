@@ -5,9 +5,17 @@
       <div class="note-header" :class="{ full: !grid }" >
         <p class="note-caption">
 					{{ note.title }}
-					<span 
+					<!-- <span 
 						class="note-priority"
 						:class="setPriorityClass(index)"
+					/> -->
+					<span 
+						class="note-priority"
+						:class="{
+							'is-normal': notes[index].priority == 'normal',
+							'is-medium': notes[index].priority == 'medium',
+							'is-hight': notes[index].priority == 'hight'
+						}"
 					/>
 				</p>
         <button type="button" @click="removeNote(index)">x</button>
@@ -36,14 +44,14 @@ export default {
     removeNote (index) {
       console.log(`Note id - ${index} removed`)
       this.$emit('remove', index)
-		},
-		setPriorityClass(index) {
-			return {
-				'is-normal': this.notes[index].priority == 'normal',
-				'is-medium': this.notes[index].priority == 'medium',
-				'is-hight': this.notes[index].priority == 'hight'
-			}
-    }
+		}
+		// setPriorityClass(index) {
+		// 	return {
+		// 		'is-normal': this.notes[index].priority == 'normal',
+		// 		'is-medium': this.notes[index].priority == 'medium',
+		// 		'is-hight': this.notes[index].priority == 'hight'
+		// 	}
+    // }
   }
 }
 </script>
