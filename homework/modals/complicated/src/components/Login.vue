@@ -63,11 +63,10 @@ export default {
 			}
 		},
 		closeModal() {
-			this.$emit('closeModal', {
-				login: this.login = "",
-				password: this.password = "",
-				reset: this.$v.$reset()
-			})
+			this.login = ''
+			this.password = ''
+			this.$v.$reset()
+			this.$emit('closeModal')
 		}
 	}
 }

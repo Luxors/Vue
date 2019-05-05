@@ -91,13 +91,12 @@ export default {
 			}
 		},
 		closeModal() {
-			this.$emit('closeModal', {
-				login: this.login = "",
-				email: this.email = "",
-				password: this.password = "",
-				repeatPassword: this.repeatPassword = "",
-				reset: this.$v.$reset()
-			})
+			this.login = ''
+			this.email = ''
+			this.password = ''
+			this.repeatPassword = ''
+			this.$v.$reset()
+			this.$emit('closeModal')
 		}
 	}
 }
