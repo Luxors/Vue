@@ -33,7 +33,7 @@ export default {
 					url: '/'
 				},
 				{
-					title: 'shop',
+					title: 'Shop',
 					url: '/shop'
 				}
 			]
