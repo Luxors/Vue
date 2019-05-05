@@ -6,7 +6,17 @@
 				<div class="product__wraper">
 
 					<div class="product-slider">
-						<img :src="product.img" :alt="product.title">
+						<carousel
+							:perPage="1"
+							:paginationEnabled="true"
+							paginationColor="#b3b3b3"
+							paginationActiveColor="#494ce8"
+						>
+							<slide v-for="(slide, index) in product.gallery" :key="index">
+								<img :src="slide.img" :alt="slide.name">
+							</slide>
+						</carousel>
+						
 					</div>
 					
 					<div class="product-content">
@@ -34,7 +44,7 @@ export default {
 		// console.log(this.$route)
 		let id = this.$route.params.id
 		this.product = this.$store.getters.getProduct(id)
-		console.log(product)
+		console.log(this.product)
 	}
 }
 </script>
@@ -49,6 +59,11 @@ export default {
 .product-content {
 	max-width: 48%;
 	text-align: center;
+}
+.VueCarousel-inner { 
+	visibility: visible!important;
+	flex-basis: 100%!important;
+	width: 100%!important;
 }
 </style>
 
