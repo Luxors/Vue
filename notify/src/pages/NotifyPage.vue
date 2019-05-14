@@ -33,10 +33,14 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 // UI
 import Preloader from '@/components/UI/Preloader.vue'
 
 import Notify from '@/components/Notify.vue'
+import { log } from 'util';
+import { setTimeout } from 'timers';
 
 export default {
 	components: {
@@ -45,18 +49,36 @@ export default {
 	},
 	data() {
 		return {
-			loading: true,
-			messages: [
-				{title: 'message 1'},
-				{title: 'message 2'},
-				{title: 'message 3'},
-				{title: 'message 4'},
-				{title: 'message 5'},
-				{title: 'message 6'}
-			]
+			loading: false,
+			messages: []
 		}
+	},
+	mounted() {
+		// this.getNotifyLazy()
+		this.getNotify()
+	},
+	methods: {
+		getNotify() {
+			this.loading = true
+			axios
+				.get('http://luxors.net/vue-pro/api/notify/notifyApi.php')
+					.then(response => {
+						let res = response.data.notify
+						this.messages = res
+						// console.log(res)
+					})
+					.catch(error => {
+						console.log(error)
+					})
+					.finally( () => this.loading = false)
+		}
+		// getNotifyLazy() {
+		// 	this.loading = true
+		// 	setTimeout( () => {
+		// 		this.getNotify()
+		// 	}, 1800)
+		// }
 	}
-	
 }
 </script>
 
@@ -65,7 +87,7 @@ export default {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 90vh;
+	// height: 90vh;
 }
 .notify__wrapper {
 	width: 400px;
