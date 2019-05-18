@@ -44,8 +44,6 @@ import axios from 'axios'
 import Preloader from '@/components/UI/Preloader.vue'
 
 import Notify from '@/components/Notify.vue'
-import { log } from 'util';
-import { setTimeout } from 'timers';
 
 export default {
 	components: {
