@@ -59,17 +59,35 @@ export default {
 	},
 	computed: {
 		messages() {
-			return this.$store.getters.getMessage
+			return this.$store.getters.getMessageMain
 		}
 	},
 	methods: {
+		getNotifyLazy() {
+			this.loading = true
+			setTimeout( () => {
+				this.getNotify()
+			}, 1800)
+		},
 		getNotify() {
 			this.loading = true
 			axios
 				.get('http://luxors.net/vue-pro/api/notify/notifyApi.php')
 					.then(response => {
-						let res = response.data.notify
-						this.$store.dispatch('setMessage', res)
+						let res = response.data.notify,
+								messages = [],
+								messagesMain = [];
+
+						//--------- Filter (Вывод только сообщений с параметром main из API )------------//
+						for (let i = 0; i < res.length; i++) {
+							if (res[i].main) messagesMain.push(res[i])
+							else messages.push(res[i])
+						}
+						console.log(messages, messagesMain)
+						//---------------------- end filter ----------------------//
+
+						this.$store.dispatch('setMessage', messages)
+						this.$store.dispatch('setMessageMain', messagesMain)
 						// this.messages = res
 						// console.log(res)
 					})
@@ -77,12 +95,6 @@ export default {
 						console.log(error)
 					})
 					.finally( () => this.loading = false)
-		},
-		getNotifyLazy() {
-			this.loading = true
-			setTimeout( () => {
-				this.getNotify()
-			}, 1800)
 		}
 	}
 }
