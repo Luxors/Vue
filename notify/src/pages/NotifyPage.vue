@@ -83,7 +83,7 @@ export default {
 							if (res[i].main) messagesMain.push(res[i])
 							else messages.push(res[i])
 						}
-						console.log(messages, messagesMain)
+						// console.log(messages, messagesMain)
 						//---------------------- end filter ----------------------//
 
 						this.$store.dispatch('setMessage', messages)
