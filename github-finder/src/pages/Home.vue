@@ -3,9 +3,17 @@
 	<div class="wrapper-content wrapper-content--fixed">
 		<section>
 			<div class="container">
+
+				<div class="error">
+					<p v-if="error"> {{error}} </p>
+				</div>
+
 				<Search :value="search" placeholder="Type username..." @search="search = $event" />
 				<!-- <p>{{search}}</p> -->
-				<button class="btn btnPrimary" @click="getRepos">Search</button>
+				<button class="btn btnPrimary" @click="getRepos">
+					<span v-if="!repos">Search</span>
+					<span v-else>Search Again</span>
+				</button>
 
 				<div class="repos__wrapper" v-if="repos">
 					<div class="repo-item" v-for="repo in repos" :key="repo.id">
@@ -33,6 +41,7 @@ export default {
 	data() {
 		return {
 			search: '',
+			error: null,
 			repos: null
 		}
 	},
@@ -43,10 +52,13 @@ export default {
 				.get(`https://api.github.com/users/${this.search}/repos`)
 					.then(res => {
 						console.log(res)
+						this.error = null
 						this.repos = res.data
 					})
 					.catch(err => {
 						console.log(err)
+						this.repos = null
+						this.error = 'Can`t Take My Hands Off You'
 					})
 		}
 	}
@@ -73,6 +85,9 @@ button {
 	margin-bottom: 10px;
 	padding: 10px 0;
 	border-bottom: 1px solid #dbdbdb;
+}
+.error {
+	margin-bottom: 10px;
 }
 </style>
 
