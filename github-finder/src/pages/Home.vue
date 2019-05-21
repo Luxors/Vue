@@ -13,7 +13,10 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import Search from '@/components/Search'
+
 export default {
 	components: {
 		Search
@@ -25,7 +28,15 @@ export default {
 	},
 	methods: {
 		getRepos() {
-			console.log(`get user ${this.search} repos`)
+			// console.log(`get user ${this.search} repos`)
+			axios
+				.get(`https://api.github.com/users/${this.search}/repos`)
+					.then(res => {
+						console.log(res)
+					})
+					.catch(err => {
+						console.log(err)
+					})
 		}
 	}
 }
