@@ -42,6 +42,7 @@ svg {
 /* Search */
 .wrapper__search {
   position: relative;
+	max-width: 400px;
 }
 .search {
   top: 0px;

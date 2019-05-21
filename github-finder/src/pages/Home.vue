@@ -6,6 +6,15 @@
 				<Search :value="search" placeholder="Type username..." @search="search = $event" />
 				<!-- <p>{{search}}</p> -->
 				<button class="btn btnPrimary" @click="getRepos">Search</button>
+
+				<div class="repos__wrapper" v-if="repos">
+					<div class="repo-item" v-for="repo in repos" :key="repo.id">
+						<div class="repo-info">
+							<a :href="repo.html_url" class="link" target="_blank">{{repo.name}}</a>
+							<span> {{repo.stargazers_count}} ⭐ </span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -23,7 +32,8 @@ export default {
 	},
 	data() {
 		return {
-			search: ''
+			search: '',
+			repos: null
 		}
 	},
 	methods: {
@@ -33,6 +43,7 @@ export default {
 				.get(`https://api.github.com/users/${this.search}/repos`)
 					.then(res => {
 						console.log(res)
+						this.repos = res.data
 					})
 					.catch(err => {
 						console.log(err)
@@ -50,6 +61,18 @@ export default {
 }
 button {
 	margin-top: 40px;
+}
+.repos__wrapper {
+	max-width: 450px;
+	margin: 30px 0;
+}
+.repo-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+	padding: 10px 0;
+	border-bottom: 1px solid #dbdbdb;
 }
 </style>
 
