@@ -83,6 +83,7 @@ export default {
 				}))
 				.catch(err => {
 					// console.log(err)
+					this.info = null
 					this.repos = null
 					this.error = 'Can`t Take My Hands Off You'
 				})
