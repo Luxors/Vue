@@ -58,7 +58,7 @@ export default {
 	},
 	mounted() {
 		// this.getNotify()
-		// return this.$store.getters.getNotifyNote()
+		// return this.$store.getters.getNotify
 	},
 	computed: {
 		messages() {
@@ -69,49 +69,21 @@ export default {
 		},
 		error() {
 			return this.$store.getters.getError
+		},
+		notify() {
+			return this.$store.getters.getNotify
 		}
 	},
-	methods: {
-		getNotifyLazy() {
-			// this.loading = true
-			this.$store.dispatch('loading', true)
-			setTimeout( () => {
-				this.getNotify()
-			}, 1800)
-		},
-		getNotify() {
-			// this.loading = true
-			this.$store.dispatch('loading', true)
-			axios
-				.get('http://luxors.net/vue-pro/api/notify/notifyApi.php')
-					.then(response => {
-						let res = response.data.notify,
-								messages = [],
-								messagesMain = [];
-
-						//--------- Filter (Вывод только сообщений с параметром main из API )------------//
-						for (let i = 0; i < res.length; i++) {
-							if (res[i].main) messagesMain.push(res[i])
-							else messages.push(res[i])
-						}
-						// console.log(messages, messagesMain)
-						//---------------------- end filter ----------------------//
-
-						this.$store.dispatch('setMessage', messages)
-						this.$store.dispatch('setMessageMain', messagesMain)
-						// this.messages = res
-						// console.log(res)
-					})
-					.catch(error => {
-
-						// this.error = 'Error: Network Error'
-						this.$store.dispatch('error', 'Error: Network Error')
-					})
-					// .finally( () => this.loading = false)
-					// .finally( () => this.$store.getters.getLoading)
-					.finally( () => this.$store.dispatch('loading', false))
-		}
-	}
+	// methods: {
+	// 	getNotifyLazy() {
+	// 		// this.loading = true
+	// 		this.$store.dispatch('loading', true)
+	// 		setTimeout( () => {
+	// 			// this.getNotify()
+	// 			this.$store.dispatch('loadNotify')
+	// 		}, 1800)
+	// 	}
+	// }
 }
 </script>
 

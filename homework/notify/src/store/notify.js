@@ -1,5 +1,6 @@
+import axios from 'axios'
 import loadMore from '../assets/js/loadMore.js'
-import getNotify from '../assets/js/getNotify.js'
+// import loadNotify from '../assets/js/loadNotify.js'
 
 export default {
 	state: {
@@ -16,8 +17,9 @@ export default {
 		loadMessages(state, payload) {
 			state.messagesMain = [...state.messagesMain, ...payload]
 		},
-		getNotify() {
-			
+		loadNotify(state, payload) {
+			state.setMessage = payload
+			state.setMessageMain = payload
 		}
 	},
 	actions: {
@@ -31,11 +33,39 @@ export default {
 			let res = getters.getMessageFilter
 			commit('loadMessages', loadMore(res))
 		},
-		getNotifyLazy() {
-
+		loadNotifyLazy({commit}) {
+			commit('loading', true)
+			setTimeout( () => {
+				commit('getNotify')
+			}, 1800)
 		},
-		setNotify() {
+		loadNotify({commit}) {
+			// commit( loadNotify() )
+			// this.loading = true
+			commit('loading', true)
+			axios
+				.get('http://luxors.net/vue-pro/api/notify/notifyApi.php')
+					.then(response => {
+						let res = response.data.notify,
+								messages = [],
+								messagesMain = [];
+						console.log(res)		
 
+						//--------- Filter (Вывод только сообщений с параметром main из API )------------//
+						for (let i = 0; i < res.length; i++) {
+							if (res[i].main) messagesMain.push(res[i])
+							else messages.push(res[i])
+						}
+						console.log(messages, messagesMain)
+						//---------------------- end filter ----------------------//
+
+						commit('setMessage', messages)
+						commit('setMessageMain', messagesMain)
+					})
+					.catch(error => {
+						commit('error', 'Error: Network Error')
+					})
+					.finally( () => commit('loading', false))
 		}
 	},
 	getters: {
@@ -50,8 +80,8 @@ export default {
 		getMessageMain(state) {
 			return state.messagesMain
 		},
-		notify(state) {
-			return state.getNotify
+		getNotify(state) {
+			return state.loadNotify
 		}
 	}
 }
