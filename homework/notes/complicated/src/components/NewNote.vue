@@ -4,7 +4,7 @@
 
 		<p class="input-wrap">
 			<label for="title">Title</label>
-			<input v-model="note.title" type="text" id="title">
+			<input v-model="note.title" type="text" id="title" />
 		</p>
 
 		<p class="input-wrap">

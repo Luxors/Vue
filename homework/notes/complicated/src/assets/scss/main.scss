@@ -81,6 +81,7 @@ section, .section {
   position: relative;
   max-width: $desktopWidth;
 	margin: 0 auto;
+	padding: 0 10px;
 	@media screen and (max-width: $desktopWidth) {
     max-width: $tableWidth ;
   }

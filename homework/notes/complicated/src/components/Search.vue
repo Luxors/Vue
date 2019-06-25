@@ -35,19 +35,23 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 svg {
   color: #e4e4e4;
 }
 /* Search */
 .wrapper__search {
   position: relative;
+	width: 100%;
+	@media screen and (min-width: 992px) {
+		width: 85%;
+	}
 }
 .search {
+	position: absolute;
   top: 0px;
   bottom: 0px;
   left: 0px;
-  position: absolute;
 }
 .search-icon {
   height: 100%;
@@ -62,7 +66,6 @@ input {
   border-radius: 30px;
   color: #909399;
   font-size: 16px;
-  min-width: 400px;
   height: auto;
 }
 

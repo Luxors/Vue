@@ -5,14 +5,6 @@
       <div class="note-header" :class="{ full: !grid }" >
         <p class="note-caption">
 					{{ note.title }}
-					<!-- <span 
-						class="note-priority"
-						:class="{
-							'is-normal': notes[index].priority == 'normal',
-							'is-medium': notes[index].priority == 'medium',
-							'is-hight': notes[index].priority == 'hight'
-						}"
-					/> -->
 					<span class="note-priority" :class="`is-${note.priority}`" />
 				</p>
         <button type="button" @click="removeNote(index)">x</button>
@@ -50,18 +42,20 @@ export default {
 <style lang="scss">
 .notes {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 40px 0;
 }
 .note {
-  width: 48%;
+  width: 100%;
   padding: 18px 20px;
   margin-bottom: 20px;
   background-color: #ffffff;
   transition: all .25s cubic-bezier(.02,.01,.47,1);
   box-shadow: 0 30px 30px rgba(0,0,0,.02);
+	@media screen and (min-width: 992px) {
+		width: 48%;
+	}
   &:hover {
     box-shadow: 0 30px 30px rgba(0,0,0,.04);
     transform: translate(0,-6px);
@@ -69,7 +63,7 @@ export default {
   }
   &.full {
     width: 100%;
-    text-align: center;
+    // text-align: center;
   }
 }
 .note-header {
@@ -77,35 +71,14 @@ export default {
   align-items: center;
   justify-content: space-between;
 	flex-wrap: wrap;
-  h2 {
-		width: 100%;
-		margin-bottom: 20px;
-		text-align: center;
-    color: #402caf;
-		font-size: 22px;
 
-		@media screen and (min-width: 992px) {
-			width: auto;
-			margin-bottom: 0;
-		}
-  }
 	button {
 		background-color: transparent;
 		border: 0;
 		cursor: pointer;
 	}
-  svg {
-    margin-right: 12px;
-    color: #999999;
-    &.active {
-      color: #402caf;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
-  }
   &.full {
-    justify-content: center;
+    // justify-content: center;
     p {
       margin-right: 16px;
       &:last-child {

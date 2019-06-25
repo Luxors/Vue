@@ -1,27 +1,13 @@
+import axios from 'axios'
+
 export default {
 	state: {
-		notes: [
-			// {
-			// 	title: 'First Note',
-			// 	priority: 'normal',
-			// 	descr: 'Description for first note',
-			// 	date: new Date(Date.now()).toLocaleString()
-			// },
-			// {
-			// 	title: 'Second Note',
-			// 	priority: 'medium',
-			// 	descr: 'Description for second note',
-			// 	date: new Date(Date.now()).toLocaleString()
-			// },
-			// {
-			// 	title: 'Third Note',
-			// 	priority: 'hight',
-			// 	descr: 'Description for third note',
-			// 	date: new Date(Date.now()).toLocaleString()
-			// }
-		]
+		notes: []
 	},
 	mutations: {
+		setNotes(state, notes) {
+			state.notes = notes
+		},
 		addNote(state, payload) {
 			state.notes.push(payload)
 		},
@@ -30,6 +16,12 @@ export default {
     }
 	},
 	actions: {
+		fetchNotes({ commit }) {
+			return axios
+				.get('http://luxors.net/vue-pro/api/notify/notes.php')
+				.then(res => res.data)
+				.then(notes => {commit('setNotes', notes)} )
+		},
 		addNote( {commit}, payload ) {
 			commit('addNote', payload )
 		},
