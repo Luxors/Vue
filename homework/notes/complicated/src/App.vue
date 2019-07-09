@@ -49,7 +49,7 @@
 					</header>
 
 					<!-- note list -->
-					<Notes :notes="notesFilter" :grid="grid" @remove="removeNote" />
+					<Notes :notes="notesFilter" :grid="grid" @edit="editNote" @remove="removeNote" />
 				</section>
 
 			</div>
@@ -80,7 +80,8 @@ export default {
       note: {
 				title: '',
 				priority: 'normal',
-        descr: ''
+				descr: '',
+				editing: null
 			}
     }
 	},
@@ -109,7 +110,7 @@ export default {
   },
   methods: {
     addNote () {
-      let {title, priority, descr} = this.note
+      let {title, priority, descr, editing} = this.note
 
       if (title === '') {
         this.message = 'Title can`t be blank!'
@@ -126,8 +127,13 @@ export default {
 			this.note.priority = 'normal'
       this.note.descr = ''
 		},
-		removeNote(id) {
-			this.$store.dispatch('removeNote', id)
+		editNote(index, value) {
+			// value = event.target
+			this.notes[index].editing = value
+			console.log(this.notes[index].value)
+		},
+		removeNote(index) {
+			this.$store.dispatch('removeNote', index)
 		}
   }
 }

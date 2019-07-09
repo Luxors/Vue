@@ -18,7 +18,7 @@ export default {
 	actions: {
 		fetchNotes({ commit }) {
 			return axios
-				.get('http://luxors.net/vue-pro/api/notify/notes.php')
+				.get('http://luxors.net/vue-pro/api/notes.php')
 				.then(res => res.data)
 				.then(notes => {commit('setNotes', notes)} )
 		},
