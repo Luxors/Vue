@@ -20,7 +20,7 @@ html {
 
 body {
   font-family: $mainFont;
-	font-size: $mainFontSize;
+	// font-size: $mainFontSize;
   font-weight: $mainFontWeight;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -81,14 +81,17 @@ section, .section {
   position: relative;
   max-width: $desktopWidth;
 	margin: 0 auto;
+	padding: 0 25px;
 	@media screen and (max-width: $desktopWidth) {
-    max-width: $smDesktopWidth;
+		max-width: $smDesktopWidth;
   }
   @media screen and (max-width: $smDesktopWidth) {
-    max-width: $tableWidth;
+		max-width: $tableWidth;
+		padding: 0 20px;
   }
   @media screen and (max-width: $tableWidth) {
-    max-width: $phoneWidth;
+		max-width: $phoneWidth;
+		padding: 0 10px;
   }
   @media screen and (max-width: $phoneWidth) {
     max-width: $smPhoneWidth;
