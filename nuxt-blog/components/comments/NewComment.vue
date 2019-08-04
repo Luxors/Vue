@@ -1,16 +1,14 @@
 <template>
-	<section class="contacts">
+	<section class="new-comment">
 		<div class="container">
-			<h2 class="title">Contact me!</h2>
-			<form class="contacts-form" @submit.prevent="onSubmit">
-				<AppInput v-model="user.name"> Name: </AppInput>
+			<h3 class="title">Add comment</h3>
+			<form class="comment-form" @submit.prevent="onSubmit">
+				<AppInput v-model="comment.name"> Name: </AppInput>
 
-				<AppInput v-model="user.email" type="email"> Email: </AppInput>
-
-				<AppTextArea v-model="user.text"> Text: </AppTextArea>
+				<AppTextArea v-model="comment.text"> Text: </AppTextArea>
 
 				<div class="controls">
-					<AppButton class="btnWhite">Submit</AppButton>
+					<AppButton>Submit</AppButton>
 				</div>
 			</form>
 		</div>
@@ -26,32 +24,25 @@ export default {
 	components: { AppButton, AppInput, AppTextArea },
 	data() {
 		return {
-			user: {
+			comment: {
 				name: '',
-				email: '',
 				text: ''
 			}
 		}
 	},
 	methods: {
 		onSubmit() {
-			console.log(this.user)
+			console.log(this.comment)
 		}
 	}
 }
 </script>
 
 <style lang="scss">
-.contacts {
+.new-comment {
 	text-align: center;
-	color: #fff;
-	background-color: #4f68f4;
 
-	.title {
-		color: #fff;
-	}
-
-	.contacts-form {
+	.comment-form {
 		max-width: 580px;
 		margin: 0 auto;
 	}
