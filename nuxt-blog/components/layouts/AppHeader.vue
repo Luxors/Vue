@@ -3,7 +3,7 @@
 		<div class="navbar">
 			<div class="container">
 				<div class="navbar-content">
-					<div class="logo">Blog</div>
+					<nuxt-link to="/" class="logo">Home</nuxt-link>
 					<ul class="navbar-list">
 						<li v-for="link in links" :key="link.title" class="navbar-item">
 							<nuxt-link class="navbar-link" :title="link.title" :to="link.url">
@@ -21,13 +21,19 @@
 export default {
 	data() {
 		return {
-			links: [{ title: 'Home', url: '/' }, { title: 'About', url: '/about' }]
+			links: [
+				{ title: 'Blog', url: '/blog' },
+				{ title: 'About', url: '/about' }
+			]
 		}
 	}
 }
 </script>
 
 <style lang="scss">
+.logo {
+	color: #333;
+}
 .navbar-link {
 	&.nuxt-link-exact-active {
 		color: #4b40e3;
