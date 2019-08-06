@@ -9,15 +9,11 @@
 
 <script>
 import Promo from '~/components/Promo.vue'
-import Intro from '~/components/UI/Intro.vue'
-import PostList from '~/components/blog/PostList.vue'
 import Contacts from '~/components/Contacts.vue'
 
 export default {
 	components: {
 		Promo,
-		Intro,
-		PostList,
 		Contacts
 	},
 	data() {

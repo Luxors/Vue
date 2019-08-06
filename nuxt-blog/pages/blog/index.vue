@@ -6,14 +6,7 @@
 </template>
 
 <script>
-import Intro from '~/components/UI/Intro.vue'
-import PostList from '~/components/blog/PostList.vue'
-
 export default {
-	components: {
-		Intro,
-		PostList
-	},
 	data() {
 		return {
 			posts: [

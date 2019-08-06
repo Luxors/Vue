@@ -21,13 +21,7 @@
 </template>
 
 <script>
-import Message from '~/components/UI/Message'
-import AppButton from '~/components/UI/Controls/Button'
-import AppInput from '~/components/UI/Controls/Input'
-import AppTextArea from '~/components/UI/Controls/TextArea'
-
 export default {
-	components: { Message, AppButton, AppInput, AppTextArea },
 	data() {
 		return {
 			message: null,
