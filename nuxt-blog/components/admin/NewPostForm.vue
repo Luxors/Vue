@@ -18,14 +18,24 @@
 
 <script>
 export default {
+	props: {
+		postEdit: {
+			type: Object,
+			required: false
+		}
+	},
 	data() {
 		return {
-			post: {
-				title: '',
-				descr: '',
-				img: '',
-				content: ''
-			}
+			post: this.postEdit
+				? {
+						...this.postEdit
+				  }
+				: {
+						title: '',
+						descr: '',
+						img: '',
+						content: ''
+				  }
 		}
 	},
 	methods: {
@@ -43,5 +53,9 @@ export default {
 .controls {
 	margin-top: 40px;
 	text-align: center;
+
+	button {
+		width: 150px;
+	}
 }
 </style>
