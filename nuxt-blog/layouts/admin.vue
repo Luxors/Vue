@@ -7,6 +7,9 @@
 				<nuxt-link to="/admin/new-post" class="link linkWhite"
 					>New Post</nuxt-link
 				>
+				<nuxt-link to="/admin/comments" class="link linkWhite"
+					>Comments</nuxt-link
+				>
 			</Intro>
 			<nuxt />
 		</div>
