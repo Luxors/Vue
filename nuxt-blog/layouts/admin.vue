@@ -22,6 +22,6 @@ export default {
 	components: {
 		AppHeader
 	},
-	layout: 'admin'
+	middleware: ['auth']
 }
 </script>
