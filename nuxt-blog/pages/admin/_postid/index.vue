@@ -22,8 +22,8 @@ export default {
 	},
 	methods: {
 		onSubmit(post) {
-			console.log('Post Huy!')
-			console.log(post)
+			// console.log('Post Huy!')
+			// console.log(post)
 		}
 	}
 }
