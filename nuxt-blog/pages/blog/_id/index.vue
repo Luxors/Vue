@@ -3,7 +3,7 @@
 		<div class="container">
 			<Post :post="post" />
 			<Comments :comments="comments" />
-			<NewComment />
+			<NewComment :post-id="$route.params.id" />
 		</div>
 	</div>
 </template>
@@ -24,41 +24,29 @@ export default {
 			),
 			axios.get(`https://luxors-blog-nuxt.firebaseio.com/comments.json`)
 		])
+
+		// COMMENTS
+		// let commentsArray = [],
+		//     commentsArrayRes = []
+
+		// Object.keys(comments.data).forEach(key => {
+		//   commentsArray.push(comments.data[key])
+		// })
+		// for (let i=0; i < commentsArray.length; i++) {
+		//   if (commentsArray[i].postId === context.params.id && commentsArray[i].publish === true) {
+		//     commentsArrayRes.push(commentsArray[i])
+		//   }
+		// }
+
+		// Comments короткая запись
+		const commentsArrayRes = Object.values(comments.data).filter(
+			(comment) => comment.postId === context.params.id && comment.publish
+		)
 		return {
 			post: post.data,
-			comments: comments.data
+			comments: commentsArrayRes
 		}
 	}
-	// data() {
-	// 	return {
-	// 		post: {
-	// 			id: 1,
-	// 			title: '1 post',
-	// 			descr: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. 1',
-	// 			img: 'https://lawnuk.com/wp-content/uploads/2016/08/sprogs-dogs.jpg',
-	// 			content:
-	// 				'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, nobis ipsa placeat ea consequuntur modi quos quas earum amet itaque, delectus nemo tempora necessitatibus similique eos illo in eius doloremque dolorem velit? Itaque eum sapiente repellat, minus voluptas perferendis hic repudiandae ex. Sed expedita possimus excepturi, iste autem veniam dolor obcaecati laboriosam alias voluptas deserunt fugiat molestiae aperiam est perferendis quia quae, repellendus aut totam labore recusandae quidem harum. Inventore non possimus hic! Doloribus accusamus, fugiat perspiciatis illum porro omnis dolore repellat architecto eius cupiditate cum animi labore suscipit! Sit repellat corporis reprehenderit voluptates. Nam unde necessitatibus consequuntur recusandae suscipit!'
-	// 		},
-	// 		comments: [
-	// 			{
-	// 				name: 'Alex',
-	// 				text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	// 			},
-	// 			{
-	// 				name: 'Pol',
-	// 				text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	// 			},
-	// 			{
-	// 				name: 'Don',
-	// 				text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	// 			},
-	// 			{
-	// 				name: 'Bill',
-	// 				text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
-	// 			}
-	// 		]
-	// 	}
-	// }
 }
 </script>
 
