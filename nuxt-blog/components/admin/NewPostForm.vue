@@ -21,6 +21,7 @@ export default {
 	props: {
 		postEdit: {
 			type: Object,
+			default: () => ({}),
 			required: false
 		}
 	},
