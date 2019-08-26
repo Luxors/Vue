@@ -26,22 +26,30 @@ export default {
 		])
 
 		// COMMENTS
-		// let commentsArray = [],
-		//     commentsArrayRes = []
 
-		// Object.keys(comments.data).forEach(key => {
-		//   commentsArray.push(comments.data[key])
-		// })
-		// for (let i=0; i < commentsArray.length; i++) {
-		//   if (commentsArray[i].postId === context.params.id && commentsArray[i].publish === true) {
-		//     commentsArrayRes.push(commentsArray[i])
-		//   }
+		// const commentsArray = []
+		// const commentsArrayRes = []
+		// if (comments.data) {
+		// 	Object.keys(comments.data).forEach((key) => {
+		// 		commentsArray.push(comments.data[key])
+		// 	})
+		// 	for (let i = 0; i < commentsArray.length; i++) {
+		// 		if (
+		// 			commentsArray[i].postId === context.params.id &&
+		// 			commentsArray[i].publish === true
+		// 		) {
+		// 			commentsArrayRes.push(commentsArray[i])
+		// 		}
+		// 	}
 		// }
 
 		// Comments короткая запись
-		const commentsArrayRes = Object.values(comments.data).filter(
-			(comment) => comment.postId === context.params.id && comment.publish
-		)
+		let commentsArrayRes = []
+		if (comments.data) {
+			commentsArrayRes = Object.values(comments.data).filter(
+				(comment) => comment.postId === context.params.id && comment.publish
+			)
+		}
 		return {
 			post: post.data,
 			comments: commentsArrayRes

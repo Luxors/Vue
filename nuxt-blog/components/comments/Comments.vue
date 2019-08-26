@@ -1,6 +1,7 @@
 <template>
 	<section v-if="comments" class="comments">
 		<h2 class="title">Comments</h2>
+		<p v-if="comments.length <= 0" style="text-align:center;">No comments</p>
 		<article v-for="comment in comments" :key="comment.name" class="comment">
 			<h4>
 				<b> {{ comment.name }} </b>
