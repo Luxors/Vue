@@ -39,6 +39,17 @@ export const actions = {
       })
       .catch((e) => console.log(e))
   },
+  aythUser({ commit }, authData) {
+    const key = 'AIzaSyBZ_eMkE7xSkOEOUsbzCYtlaqplpplbbSg'
+    return axios.post(
+      `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${key}`,
+      {
+        email: authData.email,
+        password: authData.password,
+        returnSecureToken: true
+      }
+    )
+  },
   addPost({ commit }, post) {
     return axios
       .post('https://luxors-blog-nuxt.firebaseio.com/posts.json', post)

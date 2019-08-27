@@ -28,9 +28,12 @@ export default {
   methods: {
     onSubmit() {
       // this.message = 'Submited!'
+      this.$store.dispatch('aythUser', this.user).then((res) => {
+        console.log(res)
 
-      this.user.email = ''
-      this.user.password = ''
+        this.user.email = ''
+        this.user.password = ''
+      })
     }
   }
 }
