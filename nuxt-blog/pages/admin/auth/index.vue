@@ -28,12 +28,18 @@ export default {
   methods: {
     onSubmit() {
       // this.message = 'Submited!'
-      this.$store.dispatch('aythUser', this.user).then((res) => {
-        console.log(res)
+      this.$store
+        .dispatch('authUser', this.user)
+        .then((res) => {
+          // console.log(res)
+          this.$router.push('/admin')
+        })
+        .catch((e) => {
+          console.log(e)
 
-        this.user.email = ''
-        this.user.password = ''
-      })
+          this.user.email = ''
+          this.user.password = ''
+        })
     }
   }
 }
