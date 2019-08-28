@@ -47,7 +47,14 @@ export default {
 
 <style lang="scss">
 .auth {
+  padding: 0;
   text-align: center;
+
+  .container {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+  }
 
   .title {
     color: #fff;
