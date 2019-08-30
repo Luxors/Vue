@@ -37,6 +37,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper-content--fixed {
+  margin-top: 65px;
+}
+.intro {
+  margin: 0;
+}
 button.linkWhite {
   font-family: inherit;
   background-color: transparent;
