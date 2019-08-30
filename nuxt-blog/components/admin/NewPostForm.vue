@@ -1,7 +1,7 @@
 <template>
   <section class="new-post">
     <div class="container">
-      <form @submit.prevent>
+      <form @submit.prevent="onSubmit">
         <AppInput v-model="post.title">Title:</AppInput>
         <AppInput v-model="post.descr">Descr:</AppInput>
         <AppInput v-model="post.img">Img:</AppInput>
@@ -9,7 +9,7 @@
 
         <div class="controls">
           <AppButton class="btnDanger" @click="cansel">Cansel</AppButton>
-          <AppButton @click="onSubmit">Save</AppButton>
+          <AppButton>Save</AppButton>
         </div>
       </form>
     </div>
