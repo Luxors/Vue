@@ -35,6 +35,25 @@
   </div>
 </template>
 
+<script>
+export default {
+  head() {
+    const title = 'About My SSR Blog'
+    const descr = 'About My SSR Blog! With Nuxt.js'
+    const type = 'site'
+    return {
+      title,
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: title },
+        { hid: 'description', name: 'description', content: descr },
+        { hid: 'og:description', name: 'og:description', content: descr },
+        { hid: 'og:type', name: 'og:type', content: type }
+      ]
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 .about {
   h1 {

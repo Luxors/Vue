@@ -17,6 +17,22 @@ import Comments from '~/components/comments/Comments'
 
 export default {
   components: { Post, NewComment, Comments },
+  head() {
+    const title = this.post.title
+    const descr = this.post.descr
+    const type = 'article'
+    const img = `url${this.post.img}`
+    return {
+      title,
+      meta: [
+        { hid: 'og:title', name: 'og:title', content: title },
+        { hid: 'description', name: 'description', content: descr },
+        { hid: 'og:description', name: 'og:description', content: descr },
+        { hid: 'og:type', name: 'og:type', content: type },
+        { hid: 'og:img', name: 'og:img', content: img }
+      ]
+    }
+  },
   async asyncData(context) {
     const [post, comments] = await Promise.all([
       axios.get(
