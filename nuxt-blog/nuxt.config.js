@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export default {
   mode: 'universal',
   /*
@@ -49,5 +51,23 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+  generate: {
+    // eslint-disable-next-line object-shorthand
+    routes: function() {
+      return axios
+        .get('https://luxors-blog-nuxt.firebaseio.com/posts.json')
+        .then((res) => {
+          // Get id
+          const postArray = []
+          for (const key in res.data) {
+            postArray.push({ ...res.data[key], id: key })
+          }
+          // Routes
+          return postArray.map((post) => {
+            return '/blog/' + post.id
+          })
+        })
+    }
   }
 }
