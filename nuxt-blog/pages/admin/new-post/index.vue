@@ -1,21 +1,21 @@
 <template>
-	<NewPostForm @submit="onSubmit" />
+  <NewPostForm @submit="onSubmit" />
 </template>
 
 <script>
 import NewPostForm from '@/components/admin/NewPostForm'
 
 export default {
-	components: { NewPostForm },
-	layout: 'admin',
-	methods: {
-		onSubmit(post) {
-			// console.log('Huy!')
-			// console.log(post)
-			this.$store.dispatch('addPost', post).then(() => {
-				this.$router.push('/admin')
-			})
-		}
-	}
+  components: { NewPostForm },
+  layout: 'admin',
+  methods: {
+    onSubmit(post) {
+      // console.log('Huy!')
+      // console.log(post)
+      this.$store.dispatch('addPost', post).then(() => {
+        this.$router.push('/admin')
+      })
+    }
+  }
 }
 </script>

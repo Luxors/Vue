@@ -2,7 +2,7 @@
   <!-- new note -->
   <div class="new-note">
     <label>Title</label>
-    <input v-model="note.title" type="text">
+    <input v-model="note.title" type="text" />
     <label>Description</label>
     <textarea v-model="note.descr"></textarea>
     <button class="btn btnPrimary" @click="addNote">New note</button>
@@ -14,15 +14,15 @@ export default {
   props: {
     note: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
-    addNote () {
-      this.$emit('addNote', this.note)
-    }
-  }
-}
+    addNote() {
+      this.$emit("addNote", this.note);
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -30,4 +30,3 @@ export default {
   text-align: center;
 }
 </style>
-

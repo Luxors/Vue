@@ -1,19 +1,25 @@
 <template>
   <table>
-    <transition-group name="list" tag="tbody">
-      <tr v-for="message in messages" :key="message.title">
+    <transition-group
+      name="list"
+      tag="tbody"
+    >
+      <tr
+        v-for="message in messages"
+        :key="message.title"
+      >
         <td> <span>{{ message.title }}</span> </td>
       </tr>
     </transition-group>
-		<button
-			@click="loadMore"
-			:disabled="maxLength === 0"
-			:class="{btnDisabled : maxLength === 0}"
-			class="btn btnPrimary"
-			type="button"
-		>
-			Load more
-		</button>
+    <button
+      @click="loadMore"
+      :disabled="maxLength === 0"
+      :class="{ btnDisabled: maxLength === 0 }"
+      class="btn btnPrimary"
+      type="button"
+    >
+      Load more
+    </button>
   </table>
 </template>
 
@@ -24,19 +30,19 @@ export default {
       type: Array,
       required: true
     }
-	},
-	computed: {
-		maxLength() {
-			return this.$store.getters.getMessageFilter.length
-		}
-	},
-	methods: {
-		loadMore() {
-			// logic
-			this.$store.dispatch('loadMessages')
-				.catch(err => {console.log(err)})
-		}
-	}
+  },
+  computed: {
+    maxLength() {
+      return this.$store.getters.getMessageFilter.length
+    }
+  },
+  methods: {
+    loadMore() {
+      // logic
+      this.$store.dispatch('loadMessages')
+        .catch(err => { console.log(err) })
+    }
+  }
 }
 </script>
 
@@ -44,6 +50,7 @@ export default {
 table {
   text-align: center;
 }
+
 td {
   display: flex;
   justify-content: space-between;
@@ -56,16 +63,24 @@ td {
   display: inline-block;
   margin-right: 10px;
 }
-.list-enter-active, .list-leave-active {
+
+.list-enter-active,
+.list-leave-active {
   transition: all 1s;
 }
-.list-enter, .list-leave-to /* .list-leave-active до версии 2.1.8 */ {
+
+.list-enter,
+.list-leave-to
+
+/* .list-leave-active до версии 2.1.8 */
+  {
   opacity: 0;
   transform: translateY(30px);
 }
 
 button {
   margin-top: 20px;
+
   &.btnDisabled {
     cursor: default;
     opacity: .6;

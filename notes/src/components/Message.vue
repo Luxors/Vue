@@ -9,10 +9,10 @@ export default {
   props: {
     message: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -20,6 +20,7 @@ export default {
   text-align: center;
   padding: 20px;
 }
+
 p {
   color: #ba3838;
 }

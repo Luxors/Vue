@@ -1,14 +1,17 @@
 <template>
-	<PostList :admin="true" :posts="postsLoaded" />
+  <PostList
+    :admin="true"
+    :posts="postsLoaded"
+  />
 </template>
 
 <script>
 export default {
-	layout: 'admin',
-	computed: {
-		postsLoaded() {
-			return this.$store.getters.getPostsLoaded
-		}
-	}
+  layout: 'admin',
+  computed: {
+    postsLoaded() {
+      return this.$store.getters.getPostsLoaded
+    }
+  }
 }
 </script>

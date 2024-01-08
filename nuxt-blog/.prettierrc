@@ -1,5 +1,8 @@
 {
-  "semi": false,
-  "arrowParens": "always",
-  "singleQuote": true
+	"$schema": "https://json.schemastore.org/prettierrc",
+	"semi": false,
+	"singleQuote": true,
+	"trailingComma": "none",
+	"arrowParens": "avoid",
+	"endOfLine": "lf"
 }

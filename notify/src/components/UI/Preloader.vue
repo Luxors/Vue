@@ -1,13 +1,40 @@
 <template>
-  <div class="preloader"
-       :style="{ width : width + 'px', height: height + 'px' }">
+  <div
+    class="preloader"
+    :style="{ width: width + 'px', height: height + 'px' }"
+  >
 
     <!-- wBalls -->
-    <div class="wBall" id="wBall_1"><div class="wInnerBall"></div></div>
-    <div class="wBall" id="wBall_2"><div class="wInnerBall"></div></div>
-    <div class="wBall" id="wBall_3"><div class="wInnerBall"></div></div>
-    <div class="wBall" id="wBall_4"><div class="wInnerBall"></div></div>
-    <div class="wBall" id="wBall_5"><div class="wInnerBall"></div></div>
+    <div
+      class="wBall"
+      id="wBall_1"
+    >
+      <div class="wInnerBall"></div>
+    </div>
+    <div
+      class="wBall"
+      id="wBall_2"
+    >
+      <div class="wInnerBall"></div>
+    </div>
+    <div
+      class="wBall"
+      id="wBall_3"
+    >
+      <div class="wInnerBall"></div>
+    </div>
+    <div
+      class="wBall"
+      id="wBall_4"
+    >
+      <div class="wInnerBall"></div>
+    </div>
+    <div
+      class="wBall"
+      id="wBall_5"
+    >
+      <div class="wInnerBall"></div>
+    </div>
 
   </div>
 </template>
@@ -31,7 +58,7 @@ export default {
 .preloader {
   position: relative;
   display: inline-block;
-  margin:auto;
+  margin: auto;
 }
 
 .wBall {
@@ -43,13 +70,13 @@ export default {
   animation: orbit 3.6325s infinite;
 }
 
-.wInnerBall{
+.wInnerBall {
   position: absolute;
   width: 5%;
   height: 5%;
   background: #444ce0;
-  left:0px;
-  top:0px;
+  left: 0px;
+  top: 0px;
   border-radius: 3px;
 }
 
@@ -76,7 +103,7 @@ export default {
 @keyframes orbit {
   0% {
     opacity: 1;
-    z-index:99;
+    z-index: 99;
     transform: rotate(180deg);
     animation-timing-function: ease-out;
   }
@@ -85,45 +112,44 @@ export default {
     opacity: 1;
     transform: rotate(300deg);
     animation-timing-function: linear;
-    origin:0%;
+    origin: 0%;
   }
 
   30% {
     opacity: 1;
-    transform:rotate(410deg);
+    transform: rotate(410deg);
     animation-timing-function: ease-in-out;
-    origin:7%;
+    origin: 7%;
   }
 
   39% {
     opacity: 1;
     transform: rotate(645deg);
     animation-timing-function: linear;
-    origin:30%;
+    origin: 30%;
   }
 
   70% {
     opacity: 1;
     transform: rotate(770deg);
     animation-timing-function: ease-out;
-    origin:39%;
+    origin: 39%;
   }
 
   75% {
     opacity: 1;
     transform: rotate(900deg);
     animation-timing-function: ease-out;
-    origin:70%;
+    origin: 70%;
   }
 
   76% {
-  opacity: 0;
-    transform:rotate(900deg);
+    opacity: 0;
+    transform: rotate(900deg);
   }
 
   100% {
-  opacity: 0;
+    opacity: 0;
     transform: rotate(900deg);
   }
-}
-</style>
+}</style>

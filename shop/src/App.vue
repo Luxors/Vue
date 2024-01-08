@@ -46,8 +46,7 @@ export default {
 .navbar-link {
 	&.router-link-exact-active {
 		color: #494ce8;
-		}
 	}
-
+}
 </style>
 

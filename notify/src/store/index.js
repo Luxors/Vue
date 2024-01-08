@@ -6,7 +6,7 @@ import notify from './notify'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-	modules: {
-		notify
-	}
+  modules: {
+    notify
+  }
 })

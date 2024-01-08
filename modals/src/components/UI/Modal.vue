@@ -1,22 +1,22 @@
 <template>
-<transition name="modal">
-	<div class="modal__wrapper" @click="$emit('close')">
-		<div class="modal-content" @click.stop>
+  <transition name="modal">
+    <div class="modal__wrapper" @click="$emit('close')">
+      <div class="modal-content" @click.stop>
 
-			<!-- header -->
-			<div class="modal-header">
-				<span class="modal-title"> {{ title }} </span>
-				<span class="button-close" @click="$emit('close')">×</span>
-			</div>
+        <!-- header -->
+        <div class="modal-header">
+          <span class="modal-title"> {{ title }} </span>
+          <span class="button-close" @click="$emit('close')">×</span>
+        </div>
 
-			<!-- body -->
-			<div class="modal-body">
-				<slot name="body" />
-			</div>
+        <!-- body -->
+        <div class="modal-body">
+          <slot name="body" />
+        </div>
 
-		</div>
-	</div>
-</transition>
+      </div>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -26,30 +26,29 @@ export default {
       type: String,
       required: true
     }
-	},
-	mounted() {
-		document.body.addEventListener('keyup', evt => {
-			if(evt.keyCode === 27) this.$emit('close')
-		})
-	},
+  },
+  mounted() {
+    document.body.addEventListener('keyup', evt => {
+      if (evt.keyCode === 27) this.$emit('close')
+    })
+  },
   computed: {},
   methods: {}
 }
 </script>
 
 <style lang="scss" scoped>
-
 .modal-enter,
 .modal-leave-active {
-	opacity: 0;
+  opacity: 0;
 }
 
 .modal-enter .modal-content,
 .modal-leave-active .modal-content {
-	transform: scale(1.2);
+  transform: scale(1.2);
 }
 
-.modal__wrapper{
+.modal__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +59,7 @@ export default {
   transition: opacity .2s ease;
   right: 0;
   z-index: 998;
-  background-color: rgba(00,00,00,.48);
+  background-color: rgba(00, 00, 00, .48);
 }
 
 .modal-content {
@@ -73,26 +72,28 @@ export default {
   border-radius: 8px;
   z-index: 999;
   overflow: hidden;
+
   @media screen and (min-width: 900px) {
     min-width: 500px;
   }
 }
+
 .modal-header {
   display: flex;
   align-self: center;
   justify-content: space-between;
   padding-bottom: 20px;
+
   span {
     font-size: 24px;
   }
+
   .button-close {
     cursor: pointer;
   }
 }
+
 .modal-body {
   text-align: center;
 }
-
-
-
 </style>
