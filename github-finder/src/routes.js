@@ -13,7 +13,7 @@ export default new Router({
 	mode: 'history',
 	routes: [
 		{
-			path: '/',
+			path: '/portfolio/github-finder',
 			name: 'home',
 			component: Home
 		},
