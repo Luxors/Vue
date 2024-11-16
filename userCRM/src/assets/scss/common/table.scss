@@ -3,15 +3,15 @@ table {
   width: 100%;
   line-height: 1.5em;
   border-collapse: separate;
-  border-spacing: 0 34px;
+  border-spacing: 0 10px;
   thead th {
-    padding: 20px 22px;
+    padding: 10px 20px;
     white-space: nowrap;
     font-size: 22px;
     cursor: pointer;
   }
   td {
-    padding: 20px;
+    padding: 10px 20px;;
   }
   tbody tr {
     background-color: #ffffff;

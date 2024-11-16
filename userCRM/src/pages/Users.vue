@@ -1,16 +1,16 @@
 <template>
 
 	<div class="wrapper-content wrapper-content--fixed">
-		<section>
-			<div class="container">
-				<h1>Users page</h1>
-
+		<section class="container users">
+			<h1>Users page</h1>
+			<div class="tabel-container">
 				<table>
-
 					<!-- Head -->
 					<thead>
 						<tr>
-							<th @click="sort('name')">Name&#8595;</th>
+							<th @click="sort('firstName')">Name&#8595;</th>
+
+							<th @click="sort('lastName')">Last name&#8595;</th>
 
 							<th @click="sort('age')">Age&#8595;</th>
 
@@ -22,9 +22,10 @@
 					<tbody>
 						<tr v-for="user in usersSort" :key="user.id">
 							<td>
-								<img :src="user.img" :alt="user.img">
-								<span>{{user.name}}</span>
+								<img :src="user.image" :alt="user.image">
+								<span>{{user.firstName}}</span>
 							</td>
+							<td>{{ user.lastName }}</td>
 							<td> {{user.age}} </td>
 							<td> {{user.gender}} </td>
 						</tr>
@@ -32,25 +33,20 @@
 					</tbody>
 
 				</table>
-				<div>
-					<p>Debug: sort: {{currentSort}}, dir: {{currentSortDir}} </p>
-					<p>page: {{this.page.current}}, length: {{this.page.length}} </p>
-				</div>
-				
 			</div>
+			<footer>
+				<p>Debug: sort: {{currentSort}}, dir: {{currentSortDir}} </p>
+				<p>page: {{this.page.current}}, length: {{this.page.length}} </p>
+			</footer>
 		</section>
 
 		<!-- Buttons -->
-		<section>
-			<div class="container">
-				<div class="button-list">
-					<button class="btn btnPrimary" @click="prevPage">&#8592;</button>
-					<button class="btn btnPrimary" @click="nextPage">&#8594;</button>
-				</div>
+		<footer class="container footer">
+			<div class="button-list">
+				<button class="btn btnPrimary" @click="prevPage">&#8592;</button>
+				<button class="btn btnPrimary" @click="nextPage">&#8594;</button>
 			</div>
-		</section>
-		
-
+		</footer>
 	</div>
 
 </template>
@@ -67,7 +63,7 @@ export default {
 			currentSortDir: 'asc',
 			page: {
 				current: 1,
-				length: 3
+				length: 10
 			}
 		}
 	},
@@ -77,10 +73,10 @@ export default {
 		// 	{id: 2, name: 'Alex', age: '24', gender: 'male' }
 		// ]
 		axios
-			.get('https://api.myjson.com/bins/rzgya')
+			.get('https://dummyjson.com/users')
 			.then(response => {
-				console.log(response.data)
-				this.users = response.data
+				console.log(response.data.users)
+				this.users = response.data.users
 			})
 			.catch(error => {
 				console.log(error)
@@ -121,8 +117,46 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.users {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	padding: 0;
+	overflow: hidden;
+
+	.tabel-container {
+		flex: 1;
+		overflow: auto;
+
+		table {
+			width: 100%;
+			height: 100%;
+			table-layout: fixed;
+		}
+
+		thead {
+			position: sticky;
+			top: 0;
+			z-index: 1;
+
+			th {
+				background-color: white;
+			}
+		}
+	}
+
+	footer {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+	}
+}
+.footer {
+	flex-shrink: 0;
+	padding: 10px 0;
+}
 img {
-	width: 60px;
+	width: 40px;
 	height: auto;
 	margin-right: 16px;
 	border-radius: 50%;
