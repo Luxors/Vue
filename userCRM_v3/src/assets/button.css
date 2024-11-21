@@ -1,0 +1,25 @@
+.btn {
+  display: inline-block;
+  padding: 16px 40px;
+  line-height: 1;
+  text-transform: uppercase;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btn--defaul {
+  color: #ffffff;
+  background-color: #333333;
+  border: 1px solid #333333;
+}
+
+.btn--primary {
+  color: #ffffff;
+  background-color: #494ce8;
+  border: 1px solid #494ce8;
+}
+
+.btn--primary:hover {
+  background-color: #3235b9;
+  border-color: #3235b9;
+}
