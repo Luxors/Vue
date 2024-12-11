@@ -20,7 +20,7 @@ const route = useRoute();
           >
             &#10094;
           </RouterLink>
-          <div class="app-logo">User CRM</div>
+          <h1 class="app-logo">User CRM</h1>
         </div>
       </div>
     </header>
